@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Hotel Preferences{% endblock %}
+
+{% block content %}
+<h2>Optional Hotel Preferences</h2>
+
+<p>You can optionally specify extra details for your hotel search. 
+   For example: <em>"2 adults, 2 rooms, price range 200-300"</em> 
+   or just leave this blank if you don't have any special requirements.
+</p>
+
+<form method="POST">
+  <label for="hotel_extras">Additional Preferences:</label><br/>
+  <textarea id="hotel_extras" name="hotel_extras" rows="3" cols="50"></textarea><br/><br/>
+
+  <button type="submit">Parse Hotel Extras</button>
+</form>
+
+<form method="POST" action="{{ url_for('clear_session') }}" style="display:inline;">
+  <button type="submit" style="margin-left:10px;">Clear Session</button>
+</form>
+
+{% include "summary.html" %}
+{% endblock %}

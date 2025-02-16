@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}TravelBot - Step 6{% endblock %}
+{% block content %}
+<h2>Step 6: Flight Search & Selection</h2>
+
+{% if flights|length == 0 %}
+  <p>No flights found or an error occurred.</p>
+{% else %}
+  <form method="POST">
+    <p>Select a flight:</p>
+    {% for flight in flights %}
+      <label style="display:block; margin: 8px 0;">
+        <input type="radio" name="chosen_flight_index" value="{{ loop.index0 }}">
+        <pre>{{ flight }}</pre>
+      </label>
+    {% endfor %}
+    <button type="submit" name="confirm_flight">Confirm Flight</button>
+  </form>
+  <form method="POST" action="{{ url_for('clear_session') }}" style="display: inline;">
+    <button type="submit" style="background-color: #d9534f; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer;">Clear</button>
+  </form>
+{% endif %}
+
+{% include "summary.html" %}
+{% endblock %}

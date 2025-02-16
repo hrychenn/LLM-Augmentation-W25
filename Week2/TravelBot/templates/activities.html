@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}TravelBot - Step 8{% endblock %}
+{% block content %}
+<h2>Step 8: Activities</h2>
+
+{% if activities|length == 0 %}
+  <p>No activities found or an error occurred.</p>
+{% else %}
+  <form method="POST">
+    <p>Choose any activities you like:</p>
+    {% for activity in activities %}
+      <div>
+        <input type="checkbox" name="activity_choice" value="{{ activity.index }}">
+        {{ activity.label }}
+      </div>
+    {% endfor %}
+    <br/>
+    <button type="submit" name="confirm_activities">Confirm Activities</button>
+  </form>
+  <form method="POST" action="{{ url_for('clear_session') }}" style="display: inline;">
+    <button type="submit" style="background-color: #d9534f; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer;">Clear</button>
+  </form>
+{% endif %}
+
+{% include "summary.html" %}
+{% endblock %}

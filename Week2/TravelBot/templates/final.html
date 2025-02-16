@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}TravelBot - Step 9{% endblock %}
+{% block content %}
+<h2>Step 9: Final Summary</h2>
+<p><strong>All steps complete!</strong></p>
+
+{% include "summary.html" %}
+<p>Thank you for using TravelBot.</p>
+<form method="POST" action="{{ url_for('clear_session') }}" style="display: inline;">
+    <button type="submit" style="background-color: #d9534f; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer;">Clear</button>
+</form>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}TravelBot - Step 2{% endblock %}
+{% block content %}
+<h2>Step 2: Enter Your Destination</h2>
+<p>Origin is assumed to be <strong>DTW</strong> (Detroit).</p>
+
+{% if error %}
+  <p class="error">{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+  <label>Where do you want to go?</label><br/>
+  <input type="text" name="location" placeholder="e.g. Cancun, Mexico" />
+  <br/><br/>
+  <button type="submit">Next</button>
+</form>
+<form method="POST" action="{{ url_for('clear_session') }}" style="display: inline;">
+  <button type="submit" style="background-color: #d9534f; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer;">Clear</button>
+</form>
+
+{% include "summary.html" %}
+{% endblock %}

@@ -1,0 +1,33 @@
+<div class="summary-container">
+    <h3>Current Summary</h3>
+    {% if summary.origin_code %}
+      <p>Origin Airport: {{ summary.origin_code }}</p>
+    {% endif %}
+    {% if summary.destination_code %}
+      <p>Destination Airport: {{ summary.destination_code }}</p>
+    {% endif %}
+    {% if summary.depart_date %}
+      <p>Departure: {{ summary.depart_date }}</p>
+    {% endif %}
+    {% if summary.return_date %}
+      <p>Return: {{ summary.return_date }}</p>
+    {% endif %}
+    {% if summary.flight_choice %}
+      <p><strong>Chosen Flight:</strong><br>
+         <pre>{{ summary.flight_choice }}</pre>
+      </p>
+    {% endif %}
+    {% if summary.hotel_choice %}
+      <p><strong>Chosen Hotel Offer:</strong> {{ summary.hotel_choice }}</p>
+    {% endif %}
+    {% if summary.activity_choices %}
+      <p><strong>Activities:</strong></p>
+      <ul class="activity-list">
+        {% for a in summary.activity_choices %}
+        <li>{{ a }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <p><strong>Total Price:</strong> ${{ summary.current_price }}</p>
+  </div>
+  

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Step 2: Confirm Airport Codes</h2>
+  <p>Origin (hard-coded): <strong>{{ origin_code }}</strong></p>
+  <p>Guessed destination: <strong>{{ guessed_code }}</strong></p>
+
+  <form method="POST">
+    <button type="submit" name="confirm_codes">Confirm these codes</button>
+    <button type="submit" name="go_back">Back</button>
+  </form>
+  <form method="POST" action="{{ url_for('clear_session') }}" style="display: inline;">
+    <button type="submit" style="background-color: #d9534f; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer;">Clear</button>
+  </form>
+
+  {% include "summary.html" %}
+{% endblock %}

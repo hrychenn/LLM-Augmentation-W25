@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}TravelBot - Step 5{% endblock %}
+{% block content %}
+<h2>Step 5: Travel Dates</h2>
+<form method="POST">
+  <label>Departure Date:</label>
+  <input type="date" name="dep_date" />
+  <br/><br/>
+  <label>Return Date (optional):</label>
+  <input type="date" name="ret_date" />
+  <br/><br/>
+  <button type="submit" name="next_dates">Next</button>
+</form>
+<form method="POST" action="{{ url_for('clear_session') }}" style="display: inline;">
+  <button type="submit" style="background-color: #d9534f; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer;">Clear</button>
+</form>
+
+{% include "summary.html" %}
+{% endblock %}

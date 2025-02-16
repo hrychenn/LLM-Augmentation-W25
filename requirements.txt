@@ -3,7 +3,6 @@ pandas
 regex
 numpy
 scipy
-gensim
 scikit-learn
 matplotlib
 tiktoken

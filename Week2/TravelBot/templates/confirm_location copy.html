@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}TravelBot - Step 3{% endblock %}
+{% block content %}
+<h2>Step 3: Confirm Your Location</h2>
+<p>
+  <strong>City:</strong> {{ city }} <br/>
+  <strong>State/Province:</strong> {{ state }} <br/>
+  <strong>Country:</strong> {{ country }}
+</p>
+{% if clarifications %}
+  <p style="color: orange;">Clarifications: {{ clarifications }}</p>
+{% endif %}
+
+<form method="POST">
+  <button type="submit" name="confirm_location">Confirm Location</button>
+</form>
+<form method="POST" action="{{ url_for('clear_session') }}" style="display: inline;">
+  <button type="submit" style="background-color: #d9534f; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer;">Clear</button>
+</form>
+
+{% include "summary.html" %}
+{% endblock %}

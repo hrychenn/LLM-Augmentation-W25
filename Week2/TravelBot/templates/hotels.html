@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}TravelBot - Step 7{% endblock %}
+{% block content %}
+<h2>Step 7: Find Hotels</h2>
+
+{% if hotel_names|length == 0 %}
+  <p>No hotels found or an error occurred.</p>
+{% else %}
+  <form method="POST">
+    <label>Pick a Hotel to see offers:</label><br/><br/>
+    <select name="selected_hotel">
+      {% for hname in hotel_names %}
+        <option value="{{ loop.index0 }}">{{ hname }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit" name="see_offers">See Offers</button>
+  </form>
+{% endif %}
+
+{% if offers and offers|length > 0 %}
+  <hr/>
+  <form method="POST">
+    <p>Available Offers:</p>
+    {% for offer in offers %}
+      <div style="margin:5px 0;">
+        <label>
+          <input type="radio" name="chosen_offer_index" value="{{ loop.index0 }}" />
+          Offer ID: {{ offer.id }}, Price: ${{ offer.price }}
+        </label>
+      </div>
+    {% endfor %}
+    <button type="submit" name="confirm_hotel_offer">Confirm Hotel Offer</button>
+  </form>
+  <form method="POST" action="{{ url_for('clear_session') }}" style="display: inline;">
+    <button type="submit" style="background-color: #d9534f; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer;">Clear</button>
+  </form>
+{% endif %}
+
+{% include "summary.html" %}
+{% endblock %}
